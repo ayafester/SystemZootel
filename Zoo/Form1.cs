@@ -24,5 +24,11 @@ namespace Zoo
         {
 
         }
+
+        private void calc_Button_Click(object sender, EventArgs e)
+        {
+            Calc newFormCalc = new Calc();
+            newFormCalc.Show();
+        }
     }
 }
