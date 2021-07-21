@@ -30,5 +30,11 @@ namespace Zoo
             Calc newFormCalc = new Calc();
             newFormCalc.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Cassa cassa = new Cassa();
+            cassa.Show();
+        }
     }
 }

@@ -71,6 +71,12 @@
     <Compile Include="Calc.Designer.cs">
       <DependentUpon>Calc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cassa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cassa.Designer.cs">
+      <DependentUpon>Cassa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Calc.resx">
       <DependentUpon>Calc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cassa.resx">
+      <DependentUpon>Cassa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -30,6 +30,7 @@ namespace Zoo
         private void InitializeComponent()
         {
             this.calc_Button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // calc_Button
@@ -42,11 +43,22 @@ namespace Zoo
             this.calc_Button.UseVisualStyleBackColor = true;
             this.calc_Button.Click += new System.EventHandler(this.calc_Button_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(606, 240);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(238, 99);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Касса";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 961);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.calc_Button);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -59,6 +71,7 @@ namespace Zoo
         #endregion
 
         private System.Windows.Forms.Button calc_Button;
+        private System.Windows.Forms.Button button1;
     }
 }
 
