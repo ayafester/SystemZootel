@@ -29,43 +29,48 @@ namespace Zoo
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbStatusText = new System.Windows.Forms.Label();
+            this.start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cash = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notcash = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finish = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbStatusText);
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.button6);
@@ -97,56 +102,150 @@ namespace Zoo
             this.panel1.Size = new System.Drawing.Size(1548, 938);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // button8
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(706, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 33);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Касса";
+            this.button8.Location = new System.Drawing.Point(1073, 626);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(262, 39);
+            this.button8.TabIndex = 24;
+            this.button8.Text = "Весь период";
+            this.button8.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // button7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 98);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Наличные";
+            this.button7.Location = new System.Drawing.Point(1073, 671);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(262, 73);
+            this.button7.TabIndex = 23;
+            this.button7.Text = "Сохранить .xsml за весь период";
+            this.button7.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // button6
             // 
-            this.textBox1.Location = new System.Drawing.Point(280, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 31);
-            this.textBox1.TabIndex = 2;
+            this.button6.Location = new System.Drawing.Point(805, 671);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(262, 73);
+            this.button6.TabIndex = 22;
+            this.button6.Text = "Сохранить .xsml за месяц";
+            this.button6.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // button5
             // 
-            this.textBox2.Location = new System.Drawing.Point(280, 129);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(174, 31);
-            this.textBox2.TabIndex = 4;
+            this.button5.Location = new System.Drawing.Point(805, 626);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(262, 39);
+            this.button5.TabIndex = 21;
+            this.button5.Text = "Месяц";
+            this.button5.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // button4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(112, 135);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 25);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Комментарий";
+            this.button4.Location = new System.Drawing.Point(1253, 533);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(82, 32);
+            this.button4.TabIndex = 20;
+            this.button4.Text = "Ок";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // textBox7
             // 
-            this.button1.Location = new System.Drawing.Point(280, 182);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 39);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Ок";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBox7.Location = new System.Drawing.Point(1073, 534);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(174, 31);
+            this.textBox7.TabIndex = 19;
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(955, 540);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 25);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "По факту:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label8.Location = new System.Drawing.Point(19, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(120, 25);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "21.07.2021";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.start,
+            this.cash,
+            this.notcash,
+            this.finish,
+            this.diff,
+            this.summ,
+            this.checks});
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dataGridView1.Location = new System.Drawing.Point(100, 285);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1342, 88);
+            this.dataGridView1.TabIndex = 16;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1161, 182);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(174, 39);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Ок";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(1161, 129);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(174, 31);
+            this.textBox5.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(993, 135);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(150, 25);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Комментарий";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(1161, 92);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(174, 31);
+            this.textBox6.TabIndex = 12;
+            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1051, 98);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 25);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Выдано";
             // 
             // button2
             // 
@@ -180,6 +279,7 @@ namespace Zoo
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(174, 31);
             this.textBox4.TabIndex = 7;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // label5
             // 
@@ -190,169 +290,122 @@ namespace Zoo
             this.label5.TabIndex = 6;
             this.label5.Text = "Безнал";
             // 
-            // button3
+            // button1
             // 
-            this.button3.Location = new System.Drawing.Point(1161, 182);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(174, 39);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Ок";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(280, 182);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 39);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Ок";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // textBox2
             // 
-            this.textBox5.Location = new System.Drawing.Point(1161, 129);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(174, 31);
-            this.textBox5.TabIndex = 14;
+            this.textBox2.Location = new System.Drawing.Point(280, 129);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(174, 31);
+            this.textBox2.TabIndex = 4;
             // 
-            // label6
+            // label3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(993, 135);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 25);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Комментарий";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(112, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(150, 25);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Комментарий";
             // 
-            // textBox6
+            // textBox1
             // 
-            this.textBox6.Location = new System.Drawing.Point(1161, 92);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(174, 31);
-            this.textBox6.TabIndex = 12;
+            this.textBox1.Location = new System.Drawing.Point(280, 92);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(174, 31);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
-            // label7
+            // label2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1051, 98);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 25);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Выдано";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(149, 98);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 25);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Наличные";
             // 
-            // dataGridView1
+            // label1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dataGridView1.Location = new System.Drawing.Point(117, 315);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1228, 194);
-            this.dataGridView1.TabIndex = 16;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(706, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 33);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Касса";
             // 
-            // Column1
+            // lbStatusText
             // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Начало дня";
-            this.Column1.Name = "Column1";
+            this.lbStatusText.AutoSize = true;
+            this.lbStatusText.Location = new System.Drawing.Point(209, 620);
+            this.lbStatusText.Name = "lbStatusText";
+            this.lbStatusText.Size = new System.Drawing.Size(82, 25);
+            this.lbStatusText.TabIndex = 25;
+            this.lbStatusText.Text = "label10";
             // 
-            // Column2
+            // start
             // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Конец дня";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.start.FillWeight = 200F;
+            this.start.Frozen = true;
+            this.start.HeaderText = "Начало дня";
+            this.start.Name = "start";
+            this.start.ReadOnly = true;
+            this.start.Width = 200;
             // 
-            // Column3
+            // cash
             // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Разница";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.cash.Frozen = true;
+            this.cash.HeaderText = "Наличные";
+            this.cash.Name = "cash";
+            this.cash.ReadOnly = true;
+            this.cash.Width = 200;
             // 
-            // Column4
+            // notcash
             // 
-            this.Column4.Frozen = true;
-            this.Column4.HeaderText = "Всего";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.notcash.Frozen = true;
+            this.notcash.HeaderText = "Безнал";
+            this.notcash.Name = "notcash";
+            this.notcash.ReadOnly = true;
+            this.notcash.Width = 200;
             // 
-            // Column5
+            // finish
             // 
-            this.Column5.Frozen = true;
-            this.Column5.HeaderText = "Чеки";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.finish.Frozen = true;
+            this.finish.HeaderText = "Конец дня";
+            this.finish.Name = "finish";
+            this.finish.ReadOnly = true;
+            this.finish.Width = 200;
             // 
-            // label8
+            // diff
             // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(19, 11);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(120, 25);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "21.07.2021";
+            this.diff.Frozen = true;
+            this.diff.HeaderText = "Разница";
+            this.diff.Name = "diff";
+            this.diff.ReadOnly = true;
+            this.diff.Width = 200;
             // 
-            // button4
+            // summ
             // 
-            this.button4.Location = new System.Drawing.Point(1253, 533);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 32);
-            this.button4.TabIndex = 20;
-            this.button4.Text = "Ок";
-            this.button4.UseVisualStyleBackColor = true;
+            this.summ.Frozen = true;
+            this.summ.HeaderText = "Всего";
+            this.summ.Name = "summ";
+            this.summ.ReadOnly = true;
+            this.summ.Width = 200;
             // 
-            // textBox7
+            // checks
             // 
-            this.textBox7.Location = new System.Drawing.Point(1073, 534);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(174, 31);
-            this.textBox7.TabIndex = 19;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(955, 540);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(112, 25);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "По факту:";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(805, 626);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(262, 39);
-            this.button5.TabIndex = 21;
-            this.button5.Text = "Месяц";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(805, 671);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(262, 73);
-            this.button6.TabIndex = 22;
-            this.button6.Text = "Сохранить .xsml за месяц";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(1073, 671);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(262, 73);
-            this.button7.TabIndex = 23;
-            this.button7.Text = "Сохранить .xsml за весь период";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(1073, 626);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(262, 39);
-            this.button8.TabIndex = 24;
-            this.button8.Text = "Весь период";
-            this.button8.UseVisualStyleBackColor = true;
+            this.checks.Frozen = true;
+            this.checks.HeaderText = "Чеки";
+            this.checks.Name = "checks";
+            this.checks.ReadOnly = true;
             // 
             // Cassa
             // 
@@ -391,11 +444,6 @@ namespace Zoo
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox7;
@@ -404,5 +452,13 @@ namespace Zoo
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label lbStatusText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cash;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notcash;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finish;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn summ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn checks;
     }
 }
