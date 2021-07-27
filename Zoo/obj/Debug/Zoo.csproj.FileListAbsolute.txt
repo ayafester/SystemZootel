@@ -19,3 +19,4 @@ C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.exe
 C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.pdb
 C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.Calc.resources
 C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.Cassa.resources
+C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.ShowDataCassa.resources

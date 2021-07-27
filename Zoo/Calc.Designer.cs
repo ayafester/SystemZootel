@@ -63,7 +63,7 @@ namespace Zoo
             "Премиум",
             "Люкс",
             "Грызуны"});
-            this.comboBox1.Location = new System.Drawing.Point(317, 112);
+            this.comboBox1.Location = new System.Drawing.Point(356, 112);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(233, 33);
             this.comboBox1.TabIndex = 0;
@@ -121,7 +121,7 @@ namespace Zoo
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(317, 163);
+            this.textBox1.Location = new System.Drawing.Point(356, 163);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(233, 31);
             this.textBox1.TabIndex = 6;
@@ -151,7 +151,7 @@ namespace Zoo
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(238, 576);
+            this.button1.Location = new System.Drawing.Point(238, 570);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 70);
             this.button1.TabIndex = 10;
@@ -184,7 +184,7 @@ namespace Zoo
             this.dateTimePicker1.CustomFormat = "HH:mm dd.MM.yyyy";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(317, 220);
+            this.dateTimePicker1.Location = new System.Drawing.Point(356, 220);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(233, 31);
             this.dateTimePicker1.TabIndex = 18;
@@ -194,7 +194,7 @@ namespace Zoo
             this.dateTimePicker2.CustomFormat = "HH:mm dd.MM.yyyy";
             this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(317, 282);
+            this.dateTimePicker2.Location = new System.Drawing.Point(356, 282);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(233, 31);
             this.dateTimePicker2.TabIndex = 19;
@@ -203,7 +203,7 @@ namespace Zoo
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(65, 670);
+            this.label10.Location = new System.Drawing.Point(79, 690);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(248, 25);
             this.label10.TabIndex = 20;
@@ -213,7 +213,7 @@ namespace Zoo
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(394, 670);
+            this.label11.Location = new System.Drawing.Point(408, 690);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 25);
             this.label11.TabIndex = 21;
@@ -222,7 +222,7 @@ namespace Zoo
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(65, 726);
+            this.label13.Location = new System.Drawing.Point(79, 731);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(209, 25);
             this.label13.TabIndex = 26;
@@ -232,7 +232,7 @@ namespace Zoo
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(364, 726);
+            this.label14.Location = new System.Drawing.Point(378, 731);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(82, 25);
             this.label14.TabIndex = 22;
@@ -271,7 +271,7 @@ namespace Zoo
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(317, 495);
+            this.textBox2.Location = new System.Drawing.Point(356, 495);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(233, 31);
             this.textBox2.TabIndex = 0;
@@ -281,7 +281,7 @@ namespace Zoo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 811);
+            this.ClientSize = new System.Drawing.Size(634, 821);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.checkBox3);
