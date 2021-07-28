@@ -20,6 +20,9 @@ namespace Zoo
         private SQLiteCommand m_sqlCmd;
 
         private string todayDay;
+        private string todayMonth;
+        private string todayYear;
+        private string lastDay;
 
         private double todayStart;
         private double todayCash;
@@ -46,34 +49,34 @@ namespace Zoo
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void Cassa_Load(object sender, EventArgs e)
         {
-            DateTime today = DateTime.Today; //получаем сегоднешний день
-            todayDay = today.ToString("dd.MM.yyyy");
-            MessageBox.Show(todayDay);
+            todayDay = DateTime.Today.ToString("dd.MM.yyyy"); //сегодняшний день
+            todayMonth = DateTime.Today.ToString("MM");
+            todayYear = DateTime.Today.ToString("yyyy");
 
-            m_dbConn = new SQLiteConnection();
+            lastDay = DateTime.Today.AddDays(-1).ToString("dd.MM.yyyy");//вчерашний день
+
+            m_dbConn = new SQLiteConnection(); //переменные для подключения к БД
             m_sqlCmd = new SQLiteCommand();
 
-            dbFileName = "zootel.sqlite";
-            lbStatusText.Text = "Disconnected";
+            dbFileName = "zootel.sqlite";//название БД
 
             if (!File.Exists(dbFileName))
-                SQLiteConnection.CreateFile(dbFileName);
+                SQLiteConnection.CreateFile(dbFileName);//если не существует, то создать
 
             try
             {
-                m_dbConn = new SQLiteConnection("Data Source=" + dbFileName + ";Version=3;");
-                m_dbConn.Open();
-                m_sqlCmd.Connection = m_dbConn;
+                m_dbConn = new SQLiteConnection("Data Source=" + dbFileName + ";Version=3;"); //даем название
+                m_dbConn.Open();//открываем связь
+                m_sqlCmd.Connection = m_dbConn;//создаем команду
 
-                m_sqlCmd.CommandText = "CREATE TABLE IF NOT EXISTS Cassa (id integer PRIMARY KEY," + 
-                    "thisDay text NOT NULL DEFAULT(0)," + //год месяц день
+                m_sqlCmd.CommandText = "CREATE TABLE IF NOT EXISTS Cassa (id integer PRIMARY KEY," +
+                    "year text DEFAULT(0), " +  //год
+                    "month text DEFAULT(0), " +  //месяц
+                    "thisDay text NOT NULL DEFAULT(0)," + //сегодня
                     "start text DEFAULT(0), " +//стартовая сумма
                     "cash text DEFAULT(0), " +//наличные
                     "notcash text DEFAULT(0), " +//безнал
@@ -91,23 +94,37 @@ namespace Zoo
                     "comment text DEFAULT(0)" +//комментарий
                     ")";
                 m_sqlCmd.ExecuteNonQuery();
-                lbStatusText.Text = "Connected";
+                m_dbConn.Close();
 
-
-                for(int i = 0; i < AllData.Count; i++)
+                AllData = ReadAllData();
+                if (SearchString(AllData, todayDay) == true) //проверка сегодняшнего дня
                 {
-                    if (SearchString(AllData[i], todayDay) == true) //проверка сегодняшнего дня
-                    {
-                        MessageBox.Show("Сегодня уже есть");
-                        break;
-                    }
-                    else
-                    {
-                        m_sqlCmd.CommandText = "INSERT INTO Cassa (thisDay) VALUES ( '" + todayDay + "') ";
-                        m_sqlCmd.ExecuteNonQuery();
-                    }
+                    MessageBox.Show("Сегодня уже есть");
                 }
+                else
+                {
+                    MessageBox.Show("Сегодня нет");
+                    m_dbConn.Open();
+                    string finishLastDay = "0";
+                    if(SearchString(AllData, lastDay))
+                    {
+                        m_sqlCmd.CommandText = "SELECT finish FROM Cassa WHERE thisDay = '" + lastDay + "' "; 
+                        SQLiteDataReader read5 = m_sqlCmd.ExecuteReader();
 
+                        while (read5.Read())
+                        {
+                            finishLastDay = read5.GetString(0);
+                        }
+                        read5.Close();
+                    } else
+                    {
+                        finishLastDay = "0";
+                    }
+                    m_sqlCmd.CommandText = "INSERT INTO Cassa (year, month, thisDay, start) VALUES ( '" + todayYear + "', '" + todayMonth + "', '" + todayDay + "', '" + finishLastDay + "') ";
+                    m_sqlCmd.ExecuteNonQuery();
+                    m_dbConn.Close();
+                    }
+                m_dbConn.Open();
                 m_sqlCmd.CommandText = "SELECT id FROM Cassa WHERE thisDay = '" + todayDay + "' "; //искать по нескольким параметрам день месяц год
                 SQLiteDataReader read2 = m_sqlCmd.ExecuteReader();
 
@@ -119,27 +136,27 @@ namespace Zoo
             }
             catch (SQLiteException ex)
             {
-                lbStatusText.Text = "Disconnected";
                 MessageBox.Show("Error: " + ex.Message);
             }
+
             m_dbConn.Close();
 
-            ReadAllData();
             OutputDataToTable();
 
-            DataToShowInTable();
+            DataToShowInTable(todayMonth);
         }
 
-        private void ReadAllData() //чтение всех данных в таблице Cassa СОХРАНЯЕТ В ГЛОБАЛЬНУЮ ПЕРЕМЕННУЮ
+        private List<List<String>> ReadAllData() //чтение всех данных в таблице Cassa ВОЗВРАЩАЕТ СПИСОК ИЗ СПИСКОВ СТРОК
         {
+            List<List<String>> tempData = new List<List<String>>();
             m_dbConn.Open();
+
             DataTable dTable = new DataTable();
             String sqlQuery;
 
             if (m_dbConn.State != ConnectionState.Open)
             {
                 MessageBox.Show("Open connection with database");
-                return;
             }
 
             try
@@ -150,11 +167,11 @@ namespace Zoo
                 
                 for (int i = 0; i < dTable.Rows.Count; i++)
                 {
-                    AllData.Add(new List<String>()); //add 2 rows
+                    tempData.Add(new List<String>());
 
                     for (int k = 0; k < dTable.Columns.Count; k++)
                     {
-                        AllData[i].Add(dTable.Rows[i].ItemArray[k].ToString());
+                        tempData[i].Add(dTable.Rows[i].ItemArray[k].ToString());
                     }
                 }
             }
@@ -162,9 +179,44 @@ namespace Zoo
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+
             m_dbConn.Close();
+            return tempData;
+            
         }
 
+       
+        
+        private string GetCommentFromDay(int day)
+        {
+            m_dbConn.Open();
+            DataTable dTable = new DataTable();
+            string sqlQuery = "SELECT kindOfMoney, summ, comment FROM OneDayCassa WHERE day = '" + day + "' "; //получить айдишки всех дней за месяц
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlQuery, m_dbConn);
+            adapter.Fill(dTable);
+
+            string oneComment = "";
+            List<String> array = new List<String>();
+            string allComment = "";
+
+
+            if (dTable.Rows.Count > 0)
+            {
+                dataGridView2.Rows.Clear();
+
+                for (int i = 0; i < dTable.Rows.Count; i++)
+                {
+                    dataGridView2.Rows.Add(dTable.Rows[i].ItemArray);
+                    oneComment = dTable.Rows[i].ItemArray[0].ToString() + "/" + dTable.Rows[i].ItemArray[1].ToString() + "/" + dTable.Rows[i].ItemArray[2].ToString() + ";";
+                    array.Add(oneComment);
+                }
+                allComment = string.Join(" ", array);
+            }
+            else
+                MessageBox.Show("Database is empty");
+            m_dbConn.Close();
+            return allComment;
+        }
         private void OutputDataToTable() //ВЫВОДИТ ДАННЫЕ ИЗ СЕГОДНЯШНЕГО ДНЯ, ДАННЫЕ ВСЕГДА НОВЫЕ ПОЛУЧАЕТ
         {
             todayData = readTodayData();
@@ -188,13 +240,14 @@ namespace Zoo
             string sqlQuery = "SELECT kindOfMoney, summ, comment FROM OneDayCassa WHERE day = '" + idThisDay + "' ";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlQuery, m_dbConn);
             adapter.Fill(dTable);
-
             if (dTable.Rows.Count > 0)
             {
                 dataGridView2.Rows.Clear();
 
                 for (int i = 0; i < dTable.Rows.Count; i++)
+                {
                     dataGridView2.Rows.Add(dTable.Rows[i].ItemArray);
+                }
             }
             else
                 MessageBox.Show("Database is empty");
@@ -212,11 +265,18 @@ namespace Zoo
             }*/
             m_dbConn.Close();
         }
-        private bool SearchString(List<String> AllData, string searchStr) // принимает массив строк и искомую строку и возвращает ДА, ЕСЛИ ЕСТЬ
+        private bool SearchString(List<List<String>> ThisData, string searchStr) // принимает массив строк и искомую строку и возвращает ДА, ЕСЛИ ЕСТЬ
         {
-            for (int i = 0; i < AllData.Count; i++)
+            List<String> onlyDatas = new List<String>();
+
+            for (int i = 0; i < ThisData.Count; i++)
             {
-                if(AllData[i] == searchStr)
+                onlyDatas.Add(ThisData[i][3]);
+            }
+
+            for (int i = 0; i < onlyDatas.Count; i++)
+            {
+                if(onlyDatas[i] == searchStr)
                 {
                     return true;
                 }
@@ -317,14 +377,13 @@ namespace Zoo
 
         private void Cash()
         {
-            int idThisDay = 1;
-
             newSumm = Convert.ToDouble(textBox2.Text);
             kindOfMoney = "наличные";
+            comment = textBox1.Text;
 
-            todayFinish += newSumm;
+            todayFinish += newSumm + todayStart;
             todayCash += newSumm;
-            todaySumm += newSumm;
+            todaySumm += newSumm + todayStart;
 
             todayDiff = todayStart - todayFinish; //под вопросом
 
@@ -355,13 +414,13 @@ namespace Zoo
 
         private void NotCash()
         {
-            int idThisDay = 1;
-
+            
             newSumm = Convert.ToDouble(textBox2.Text);
             kindOfMoney = "безнал";
+            comment = textBox1.Text;
 
             todayNotcash += newSumm;
-            todaySumm += newSumm;
+            todaySumm += newSumm + todayStart;
             todayCheck++;
             m_dbConn.Open(); 
 
@@ -387,13 +446,12 @@ namespace Zoo
 
         private void Issue()
         {
-            int idThisDay = 1;
-
             newSumm = Convert.ToDouble(textBox2.Text);
             kindOfMoney = "выдача";
+            comment = textBox1.Text;
 
-            todayFinish -= newSumm;
-            todaySumm -= newSumm;
+            todayFinish -= newSumm + todayStart;
+            todaySumm -= newSumm + todayStart;
             
             m_dbConn.Open();
 
@@ -429,33 +487,62 @@ namespace Zoo
         }
 
 
-        private void DataToShowInTable()
+        private void DataToShowInTable(string month)
         {
-            for (int i = 0; i < 1; i++) //вывод таблицы с использованием всех данных в БД
+            m_dbConn.Open();
+            DataTable dTable = new DataTable();
+            string sqlQuery = "SELECT thisDay, start, cash, notcash, finish, diff, summ, checksDay, inFacts FROM Cassa WHERE month = '" + month + "' ";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlQuery, m_dbConn);
+            adapter.Fill(dTable);
+
+            if (dTable.Rows.Count > 0)
             {
-                dataGridView3.RowCount = AllData.Count;
-                dataGridView3.ColumnCount = 10;
-                int m = 0;
-                for (int k = 1; k < 10; k++)
-                {
-                    dataGridView3.Rows[i].Cells[m].Value = AllData[i][k];
-                    m++;
-                }
+                dataGridView3.Rows.Clear();
 
-                m_dbConn.Open();
-                m_sqlCmd.CommandText = "SELECT day, kindOfMoney, summ, comment FROM OneDayCassa";
-
-                //string newcomment = "";
-
-                SQLiteDataReader read3 = m_sqlCmd.ExecuteReader();
-
-                while(read3.Read())
-                {
-                    //newcomment = 
-                }
-                read3.Close();
-                m_dbConn.Close();
+                for (int i = 0; i < dTable.Rows.Count; i++)
+                    dataGridView3.Rows.Add(dTable.Rows[i].ItemArray);
             }
+            else
+                MessageBox.Show("Database is empty");
+
+            m_dbConn.Close();
+
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            {
+                dataGridView3.Rows[i].Cells[9].Value = GetCommentFromDay(idThisDay);
+                
+            }
+
+            /*AllData = ReadAllData();
+            if(AllData.Count != 0)
+            {
+                for (int i = 0; i < AllData.Count; i++) //вывод таблицы с использованием всех данных в БД
+                {
+                    dataGridView3.RowCount = AllData.Count;
+                    dataGridView3.ColumnCount = 10;
+                    int m = 0;
+                    for (int k = 3; k < 12; k++)
+                    {
+                        dataGridView3.Rows[i].Cells[m].Value = AllData[i][k];
+                        m++;
+                    }
+
+                    m_dbConn.Open();
+                    m_sqlCmd.CommandText = "SELECT day, kindOfMoney, summ, comment FROM OneDayCassa";
+
+                    //string newcomment = "";
+
+                    SQLiteDataReader read3 = m_sqlCmd.ExecuteReader();
+
+                    while (read3.Read())
+                    {
+                        //newcomment = 
+                    }
+                    read3.Close();
+                    m_dbConn.Close();
+                }
+            }*/
+
         }
 
         private void dataGridView2_KeyUp(object sender, KeyEventArgs e) //мб менять таблицу

@@ -29,18 +29,22 @@ namespace Zoo
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lbStatusText = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -58,28 +62,23 @@ namespace Zoo
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,7 +87,6 @@ namespace Zoo
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.lbStatusText);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.textBox7);
             this.panel1.Controls.Add(this.label9);
@@ -112,7 +110,7 @@ namespace Zoo
             this.tabControl1.Location = new System.Drawing.Point(60, 400);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1483, 501);
+            this.tabControl1.Size = new System.Drawing.Size(1483, 529);
             this.tabControl1.TabIndex = 29;
             // 
             // tabPage1
@@ -126,6 +124,44 @@ namespace Zoo
             this.tabPage1.Text = "Сегодня";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dataGridView2.Location = new System.Drawing.Point(366, 37);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 30;
+            this.dataGridView2.Size = new System.Drawing.Size(850, 403);
+            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView2_KeyUp);
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 250F;
+            this.Column1.HeaderText = "Вид оплаты";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 250;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 250F;
+            this.Column2.HeaderText = "Сумма";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 250;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 300F;
+            this.Column3.HeaderText = "Комментарий";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 300;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView3);
@@ -135,14 +171,34 @@ namespace Zoo
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1475, 463);
+            this.tabPage2.Size = new System.Drawing.Size(1475, 491);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Месяц";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column11,
+            this.Column9,
+            this.Column12,
+            this.Column10,
+            this.Column13});
+            this.dataGridView3.Location = new System.Drawing.Point(6, 62);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowTemplate.Height = 30;
+            this.dataGridView3.Size = new System.Drawing.Size(1432, 374);
+            this.dataGridView3.TabIndex = 5;
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1131, 426);
+            this.button3.Location = new System.Drawing.Point(1131, 454);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(312, 31);
             this.button3.TabIndex = 4;
@@ -194,15 +250,6 @@ namespace Zoo
             this.comboBox1.Size = new System.Drawing.Size(173, 33);
             this.comboBox1.TabIndex = 26;
             // 
-            // lbStatusText
-            // 
-            this.lbStatusText.AutoSize = true;
-            this.lbStatusText.Location = new System.Drawing.Point(178, 16);
-            this.lbStatusText.Name = "lbStatusText";
-            this.lbStatusText.Size = new System.Drawing.Size(82, 25);
-            this.lbStatusText.TabIndex = 25;
-            this.lbStatusText.Text = "label10";
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(1372, 199);
@@ -248,14 +295,15 @@ namespace Zoo
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Turquoise;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.start,
@@ -375,64 +423,6 @@ namespace Zoo
             this.label1.TabIndex = 0;
             this.label1.Text = "Касса";
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dataGridView2.Location = new System.Drawing.Point(370, 37);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 30;
-            this.dataGridView2.Size = new System.Drawing.Size(846, 364);
-            this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView2_KeyUp);
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 250F;
-            this.Column1.HeaderText = "Вид оплаты";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 250;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 250F;
-            this.Column2.HeaderText = "Сумма";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 250;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 300F;
-            this.Column3.HeaderText = "Комментарий";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 300;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column13});
-            this.dataGridView3.Location = new System.Drawing.Point(22, 64);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowTemplate.Height = 30;
-            this.dataGridView3.Size = new System.Drawing.Size(1421, 345);
-            this.dataGridView3.TabIndex = 5;
-            // 
             // Column4
             // 
             this.Column4.FillWeight = 130F;
@@ -468,20 +458,6 @@ namespace Zoo
             this.Column8.Name = "Column8";
             this.Column8.Width = 130;
             // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 130F;
-            this.Column9.HeaderText = "Всего (и нал, и без)";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 130;
-            // 
-            // Column10
-            // 
-            this.Column10.FillWeight = 130F;
-            this.Column10.HeaderText = "По факту в кассе";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 130;
-            // 
             // Column11
             // 
             this.Column11.FillWeight = 130F;
@@ -489,12 +465,26 @@ namespace Zoo
             this.Column11.Name = "Column11";
             this.Column11.Width = 130;
             // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 130F;
+            this.Column9.HeaderText = "Всего (и нал, и без)";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 130;
+            // 
             // Column12
             // 
             this.Column12.FillWeight = 130F;
             this.Column12.HeaderText = "Количество чеков";
             this.Column12.Name = "Column12";
             this.Column12.Width = 130;
+            // 
+            // Column10
+            // 
+            this.Column10.FillWeight = 130F;
+            this.Column10.HeaderText = "По факту в кассе";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 130;
             // 
             // Column13
             // 
@@ -517,11 +507,11 @@ namespace Zoo
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -539,7 +529,6 @@ namespace Zoo
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lbStatusText;
         private System.Windows.Forms.DataGridViewTextBoxColumn start;
         private System.Windows.Forms.DataGridViewTextBoxColumn cash;
         private System.Windows.Forms.DataGridViewTextBoxColumn notcash;
@@ -566,10 +555,10 @@ namespace Zoo
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
     }
 }
