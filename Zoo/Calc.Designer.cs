@@ -234,9 +234,8 @@ namespace Zoo
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label14.Location = new System.Drawing.Point(378, 731);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 25);
+            this.label14.Size = new System.Drawing.Size(0, 25);
             this.label14.TabIndex = 22;
-            this.label14.Text = "label14";
             // 
             // checkBox3
             // 

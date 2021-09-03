@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using OfficeOpenXml;
 
 
 namespace Zoo
@@ -63,13 +64,9 @@ namespace Zoo
             m_sqlCmd = new SQLiteCommand();
 
             dbFileName = "zootel.sqlite";//название БД
-
-            if (!File.Exists(dbFileName))
-                SQLiteConnection.CreateFile(dbFileName);//если не существует, то создать
-
             try
             {
-                m_dbConn = new SQLiteConnection("Data Source=" + dbFileName + ";Version=3;"); //даем название
+                m_dbConn = new SQLiteConnection("Data Source=" + dbFileName + ";Version=3;"); //создаем связь
                 m_dbConn.Open();//открываем связь
                 m_sqlCmd.Connection = m_dbConn;//создаем команду
 
@@ -84,7 +81,8 @@ namespace Zoo
                     "diff text DEFAULT(0), " +//всего
                     "summ text DEFAULT(0), " + // по факту
                     "checksDay text DEFAULT(0), " +//разница начала и конца
-                    "inFacts text DEFAULT(0)" +//количество чеков 
+                    "inFacts text DEFAULT(0)," +
+                    "commento text DEFAULT(0)" +//количество чеков 
                     ")";
                 m_sqlCmd.ExecuteNonQuery();
                 m_sqlCmd.CommandText = "CREATE TABLE IF NOT EXISTS OneDayCassa (id integer PRIMARY KEY," + //таблица доходов и расходов за день, прикручена к таблице дней
@@ -213,12 +211,13 @@ namespace Zoo
                 allComment = string.Join(" ", array);
             }
             else
-                MessageBox.Show("Database is empty");
+                MessageBox.Show("Данных нет");
             m_dbConn.Close();
             return allComment;
         }
         private void OutputDataToTable() //ВЫВОДИТ ДАННЫЕ ИЗ СЕГОДНЯШНЕГО ДНЯ, ДАННЫЕ ВСЕГДА НОВЫЕ ПОЛУЧАЕТ
         {
+            DataToShowInTable(todayMonth);
             todayData = readTodayData();
 
             dataGridView1.RowCount = 1;
@@ -250,7 +249,7 @@ namespace Zoo
                 }
             }
             else
-                MessageBox.Show("Database is empty");
+                MessageBox.Show("Данных нет");
 
             /*for (int i = 0; i < 1; i++) //вывод таблицы с использованием всех данных в БД
             {
@@ -377,6 +376,7 @@ namespace Zoo
 
         private void Cash()
         {
+            string tempCom = GetCommentFromDay(idThisDay);
             newSumm = Convert.ToDouble(textBox2.Text);
             kindOfMoney = "наличные";
             comment = textBox1.Text;
@@ -404,6 +404,7 @@ namespace Zoo
                 "', ('diff')  = '" + todayDiff.ToString() +
                 "', ('summ')  = '" + todaySumm.ToString() +
                 "', ('checksDay')  = '" + todayCheck.ToString() +
+                "', ('commento')  = '" + tempCom +
                 "'  WHERE thisDay = '" + todayDay + "' ";
             m_sqlCmd.ExecuteNonQuery();
 
@@ -414,7 +415,7 @@ namespace Zoo
 
         private void NotCash()
         {
-            
+            string tempCom = GetCommentFromDay(idThisDay);
             newSumm = Convert.ToDouble(textBox2.Text);
             kindOfMoney = "безнал";
             comment = textBox1.Text;
@@ -436,6 +437,7 @@ namespace Zoo
                 "', ('finish')  = '" + todayFinish.ToString() +
                 "', ('summ')  = '" + todaySumm.ToString() +
                 "', ('checksDay')  = '" + todayCheck.ToString() +
+                "', ('commento')  = '" + tempCom +
                 "'  WHERE thisDay = '" + todayDay + "' ";
             m_sqlCmd.ExecuteNonQuery();
 
@@ -446,6 +448,7 @@ namespace Zoo
 
         private void Issue()
         {
+            string tempCom = GetCommentFromDay(idThisDay);
             newSumm = Convert.ToDouble(textBox2.Text);
             kindOfMoney = "выдача";
             comment = textBox1.Text;
@@ -465,6 +468,7 @@ namespace Zoo
 
             m_sqlCmd.CommandText = "UPDATE Cassa SET ('finish') = '" + todayFinish.ToString() +
                 "', ('summ')  = '" + todaySumm.ToString() +
+                "', ('commento')  = '" + tempCom +
                 "'  WHERE thisDay = '" + todayDay + "' ";
             m_sqlCmd.ExecuteNonQuery();
 
@@ -487,11 +491,11 @@ namespace Zoo
         }
 
 
-        private void DataToShowInTable(string month)
+        private DataTable DataToShowInTable(string month)
         {
             m_dbConn.Open();
             DataTable dTable = new DataTable();
-            string sqlQuery = "SELECT thisDay, start, cash, notcash, finish, diff, summ, checksDay, inFacts FROM Cassa WHERE month = '" + month + "' ";
+            string sqlQuery = "SELECT thisDay, start, cash, notcash, finish, diff, summ, checksDay, inFacts, commento FROM Cassa WHERE month = '" + month + "' ";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlQuery, m_dbConn);
             adapter.Fill(dTable);
 
@@ -503,16 +507,10 @@ namespace Zoo
                     dataGridView3.Rows.Add(dTable.Rows[i].ItemArray);
             }
             else
-                MessageBox.Show("Database is empty");
+                MessageBox.Show("Данных нет");
 
             m_dbConn.Close();
-
-            for (int i = 0; i < dataGridView3.Rows.Count; i++)
-            {
-                dataGridView3.Rows[i].Cells[9].Value = GetCommentFromDay(idThisDay);
-                
-            }
-
+            return dTable;
             /*AllData = ReadAllData();
             if(AllData.Count != 0)
             {
@@ -545,10 +543,89 @@ namespace Zoo
 
         }
 
-        private void dataGridView2_KeyUp(object sender, KeyEventArgs e) //мб менять таблицу
+
+        private void button2_Click(object sender, EventArgs e)
         {
+            string searchMonth = idThisDay.ToString();
+            if (textBox3.Text == "январь")
+            {
+                searchMonth = "01";
+            } else if (textBox3.Text =="февраль")
+            {
+                searchMonth = "02";
+            }
+            else if (textBox3.Text == "март")
+            {
+                searchMonth = "03";
+            }
+            else if (textBox3.Text == "апрель")
+            {
+                searchMonth = "04";
+            }
+            else if (textBox3.Text == "май")
+            {
+                searchMonth = "05";
+            }
+            else if (textBox3.Text == "июнь")
+            {
+                searchMonth = "06";
+            }
+            else if (textBox3.Text == "июль")
+            {
+                searchMonth = "07";
+            }
+            else if (textBox3.Text == "август")
+            {
+                searchMonth = "08";
+            }
+            else if (textBox3.Text == "сентябрь")
+            {
+                searchMonth = "09";
+            }
+            else if (textBox3.Text == "октябрь")
+            {
+                searchMonth = "10";
+            }
+            else if (textBox3.Text == "ноябрь")
+            {
+                searchMonth = "11";
+            }
+            else if (textBox3.Text == "декабрь")
+            {
+                searchMonth = "12";
+            } else
+            {
+                MessageBox.Show("Введите месяц");
+            }
 
+            DataToShowInTable(searchMonth);
+        }
 
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            number = char.ToLower(number);
+           
+            if (Char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void SaveEXLSX(string nameOfMonth, DataTable dataTable)
+        {
+            FileInfo newFile = new FileInfo(nameOfMonth + @"\table.xlsx");
+            using (ExcelPackage pck = new ExcelPackage(newFile))
+            {
+                ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Accounts");
+                ws.Cells["A1"].LoadFromDataTable(dataTable, true);
+                pck.Save();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //SaveEXLSX(textBox3.Text, DataToShowInTable(todayMonth));
         }
     }
 }

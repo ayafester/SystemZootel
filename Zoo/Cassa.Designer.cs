@@ -39,6 +39,16 @@ namespace Zoo
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -62,16 +72,6 @@ namespace Zoo
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -119,13 +119,15 @@ namespace Zoo
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1475, 463);
+            this.tabPage1.Size = new System.Drawing.Size(1475, 491);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Сегодня";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -133,10 +135,10 @@ namespace Zoo
             this.Column3});
             this.dataGridView2.Location = new System.Drawing.Point(366, 37);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 30;
             this.dataGridView2.Size = new System.Drawing.Size(850, 403);
             this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView2_KeyUp);
             // 
             // Column1
             // 
@@ -178,6 +180,8 @@ namespace Zoo
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
@@ -192,18 +196,101 @@ namespace Zoo
             this.Column13});
             this.dataGridView3.Location = new System.Drawing.Point(6, 62);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowTemplate.Height = 30;
             this.dataGridView3.Size = new System.Drawing.Size(1432, 374);
             this.dataGridView3.TabIndex = 5;
             // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 130F;
+            this.Column4.HeaderText = "Дата";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 130;
+            // 
+            // Column5
+            // 
+            this.Column5.FillWeight = 130F;
+            this.Column5.HeaderText = "Начало дня";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 130;
+            // 
+            // Column6
+            // 
+            this.Column6.FillWeight = 130F;
+            this.Column6.HeaderText = "Наличные";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 130;
+            // 
+            // Column7
+            // 
+            this.Column7.FillWeight = 130F;
+            this.Column7.HeaderText = "Безнал";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 130;
+            // 
+            // Column8
+            // 
+            this.Column8.FillWeight = 130F;
+            this.Column8.HeaderText = "Конец дня";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 130;
+            // 
+            // Column11
+            // 
+            this.Column11.FillWeight = 130F;
+            this.Column11.HeaderText = "Разница";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 130;
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 130F;
+            this.Column9.HeaderText = "Всего (и нал, и без)";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 130;
+            // 
+            // Column12
+            // 
+            this.Column12.FillWeight = 130F;
+            this.Column12.HeaderText = "Количество чеков";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 130;
+            // 
+            // Column10
+            // 
+            this.Column10.FillWeight = 130F;
+            this.Column10.HeaderText = "По факту в кассе";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 130;
+            // 
+            // Column13
+            // 
+            this.Column13.FillWeight = 210F;
+            this.Column13.HeaderText = "Комментарии";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Width = 210;
+            // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(1131, 454);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(312, 31);
             this.button3.TabIndex = 4;
             this.button3.Text = "Сохранить .xsl";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -213,6 +300,7 @@ namespace Zoo
             this.button2.TabIndex = 3;
             this.button2.Text = "Найти";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox3
             // 
@@ -220,6 +308,8 @@ namespace Zoo
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(223, 31);
             this.textBox3.TabIndex = 2;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // textBox1
             // 
@@ -422,76 +512,6 @@ namespace Zoo
             this.label1.Size = new System.Drawing.Size(96, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Касса";
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 130F;
-            this.Column4.HeaderText = "Дата";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 130;
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 130F;
-            this.Column5.HeaderText = "Начало дня";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 130;
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 130F;
-            this.Column6.HeaderText = "Наличные";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 130;
-            // 
-            // Column7
-            // 
-            this.Column7.FillWeight = 130F;
-            this.Column7.HeaderText = "Безнал";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 130;
-            // 
-            // Column8
-            // 
-            this.Column8.FillWeight = 130F;
-            this.Column8.HeaderText = "Конец дня";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 130;
-            // 
-            // Column11
-            // 
-            this.Column11.FillWeight = 130F;
-            this.Column11.HeaderText = "Разница";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 130;
-            // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 130F;
-            this.Column9.HeaderText = "Всего (и нал, и без)";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 130;
-            // 
-            // Column12
-            // 
-            this.Column12.FillWeight = 130F;
-            this.Column12.HeaderText = "Количество чеков";
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 130;
-            // 
-            // Column10
-            // 
-            this.Column10.FillWeight = 130F;
-            this.Column10.HeaderText = "По факту в кассе";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 130;
-            // 
-            // Column13
-            // 
-            this.Column13.FillWeight = 210F;
-            this.Column13.HeaderText = "Комментарии";
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 210;
             // 
             // Cassa
             // 

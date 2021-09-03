@@ -20,3 +20,10 @@ C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.pdb
 C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.Calc.resources
 C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.Cassa.resources
 C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.ShowDataCassa.resources
+C:\Users\Georg\source\repos\Zoo\Zoo\bin\Debug\EPPlus.dll
+C:\Users\Georg\source\repos\Zoo\Zoo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Georg\source\repos\Zoo\Zoo\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Georg\source\repos\Zoo\Zoo\bin\Debug\EPPlus.xml
+C:\Users\Georg\source\repos\Zoo\Zoo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.Schedule.resources
+C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.DataBase.resources
