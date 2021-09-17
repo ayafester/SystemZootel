@@ -27,3 +27,5 @@ C:\Users\Georg\source\repos\Zoo\Zoo\bin\Debug\EPPlus.xml
 C:\Users\Georg\source\repos\Zoo\Zoo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
 C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.Schedule.resources
 C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.DataBase.resources
+C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.Card.resources
+C:\Users\Georg\source\repos\Zoo\Zoo\obj\Debug\Zoo.AddAnimal.resources

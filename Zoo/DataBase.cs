@@ -13,12 +13,13 @@ namespace Zoo
 {
     public partial class DataBase : Form
     {
+        public int currentRow;
         public DataBase()
         {
             InitializeComponent();
         }
 
-        private void DataBase_Load(object sender, EventArgs e)
+        /*private void DataBase_Load(object sender, EventArgs e)
         {
             try
             {
@@ -35,16 +36,6 @@ namespace Zoo
                     "sale text DEFAULT(0) )";
                 Form1.m_sqlCmd.ExecuteNonQuery();
 
-                Form1.m_sqlCmd.CommandText = "CREATE TABLE IF NOT EXISTS Animal (id integer PRIMARY KEY," +
-                    "idOfMaster text NOT NULL DEFAULT(0) REFERENCES DataBase(id)," +
-                    "breed text DEFAULT(0)," +
-                    "name text DEFAULT(0)," +
-                    "food text DEFAULT(0)," +
-                    "walking text DEFAULT(0)," +
-                    "comment text DEFAULT(0) )";
-                Form1.m_sqlCmd.ExecuteNonQuery();
-                Form1.m_dbConn.Close();
-                FillDGV1();
 
             }
             catch (SQLiteException ex)
@@ -97,7 +88,6 @@ namespace Zoo
                 }
             }
             string thisDogo = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
-            //MessageBox.Show("номер договора: " + thisDogo);
             
             if (thisDogo.Length == 0)
             {
@@ -112,7 +102,6 @@ namespace Zoo
                 UpdateData(rowIndex, thisDogo);
             }
 
-            // MessageBox.Show("e" + rowIndex.ToString());
         }
 
         private List<int> SearchRow(string thisStr) { 
@@ -246,16 +235,20 @@ namespace Zoo
             }
         }
 
-       
-        private void dataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int thisRow = dataGridView1.CurrentRow.Index;
+            currentRow = e.RowIndex;
+        }
+        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            //int thisRow = dataGridView1.CurrentRow.Index;
+            MessageBox.Show(currentRow.ToString() + " Строчка удаляемая");
 
             for (int i = 0; i < 9; i++)
             {
-                if(dataGridView1.Rows[thisRow].Cells[i].Value.ToString().Length != 0)
+                if (dataGridView1.Rows[currentRow].Cells[i].Value.ToString().Length != 0)
                 {
-                    string firstStr = dataGridView1.Rows[thisRow].Cells[i].Value.ToString();
+                    string firstStr = dataGridView1.Rows[currentRow].Cells[i].Value.ToString();
                     MessageBox.Show(firstStr);
                     List<int> thisRowForDel = SearchRow(firstStr);
                     MessageBox.Show(thisRowForDel.Count.ToString() + " количество совпадений " + thisRowForDel[0].ToString());
@@ -266,8 +259,9 @@ namespace Zoo
                         Form1.m_sqlCmd.CommandText = "DELETE FROM DataBase where id = '" + id + "' ";
                         Form1.m_sqlCmd.ExecuteNonQuery();
                         Form1.m_dbConn.Close();
-                        MessageBox.Show("Строчку удалили с айди: " + id );
-                    } else
+                        MessageBox.Show("Строчку удалили с айди: " + id);
+                    }
+                    else
                     {
                         MessageBox.Show("Строчку не удалили");
                     }
@@ -275,5 +269,16 @@ namespace Zoo
                 }
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            Card newCard = new Card();
+            newCard.Show();
+        }*/
     }
 }

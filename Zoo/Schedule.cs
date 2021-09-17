@@ -23,32 +23,8 @@ namespace Zoo
 
         private void Schedule_Load(object sender, EventArgs e)
         {
-            sched.RowCount = 9;
-            sched.ColumnCount = 20;
-            
-            sched.Rows[0].Cells[0].Value = "Люкс 1";
-            sched.Rows[1].Cells[0].Value = "Стандарт 1";
-            sched.Rows[2].Cells[0].Value = "Стандарт 2";
-            sched.Rows[3].Cells[0].Value = "Премиум";
-            sched.Rows[4].Cells[0].Value = "Стандарт 3";
-            sched.Rows[5].Cells[0].Value = "Стандарт 4";
-            sched.Rows[6].Cells[0].Value = "Люкс 2";
-            sched.Rows[7].Cells[0].Value = "Клетка";
-            sched.Rows[8].Cells[0].Value = "Грызуны";
 
-            for (int i = 0; i < 9; i++)
-            {
-                sched.Rows[i].Cells[1].Value = "6:00";
-                sched.Rows[i].Cells[3].Value = "14:00";
-                sched.Rows[i].Cells[5].Value = "21:00";
-                sched.Rows[i].Cells[7].Value = "7:00";
-                sched.Rows[i].Cells[9].Value = "15:00";
-                sched.Rows[i].Cells[11].Value = "21:00";
-                sched.Rows[i].Cells[13].Value = "7:00";
-                sched.Rows[i].Cells[15].Value = "15:00";
-                sched.Rows[i].Cells[17].Value = "22:00";
-                sched.Rows[i].Cells[19].Value = "  ";
-            }
+            /*
             Form1.m_dbConn.Open();
             Form1.m_sqlCmd.CommandText = "CREATE TABLE IF NOT EXISTS Schedule (id INTEGER PRIMARY KEY," +
                 "nameOfBox text DEFAULT(0)," +
@@ -85,7 +61,7 @@ namespace Zoo
             }
             
 
-            Form1.m_dbConn.Close();
+            Form1.m_dbConn.Close();*/
 
 
             
@@ -93,7 +69,7 @@ namespace Zoo
 
         private void GetDataTODB(int i, int j, int k)
         {
-            Form1.m_dbConn.Open();
+            /*Form1.m_dbConn.Open();
             Form1.m_sqlCmd.CommandText = "UPDATE Schedule SET ('nameOfBox') = '" + sched.Rows[i].Cells[j].Value.ToString() + "', ('walkTimeMorning')  = '" + sched.Rows[i].Cells[j].Value.ToString() +
                    "', ('checkWalk1')  = '" + sched.Rows[i].Cells[j].Value.ToString() +  
                    "', ('walkTimeDinner')  = '" + sched.Rows[i].Cells[j].Value.ToString() +
@@ -114,14 +90,13 @@ namespace Zoo
                    "', ('checkClean3')  = '" + sched.Rows[i].Cells[j].Value.ToString() +
                    "', ('other) =  '" + sched.Rows[i].Cells[j].Value.ToString() + "' WHERE id = '" + k + "' ";
             Form1.m_sqlCmd.ExecuteNonQuery();
-            Form1.m_dbConn.Close();
+            Form1.m_dbConn.Close();*/
         }
         private void button1_Click(object sender, EventArgs e)
         {
 
         }
 
-        
-        
+       
     }
 }

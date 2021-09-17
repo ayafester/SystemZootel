@@ -30,10 +30,10 @@ namespace Zoo
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Договор = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.two = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,16 +44,18 @@ namespace Zoo
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.add = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.add);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.panel1.Location = new System.Drawing.Point(9, 12);
@@ -61,19 +63,29 @@ namespace Zoo
             this.panel1.Size = new System.Drawing.Size(1563, 937);
             this.panel1.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.AllowDrop = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(-1873, 171);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 25);
+            this.label2.TabIndex = 5;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1402, 84);
+            this.button2.Location = new System.Drawing.Point(1108, 327);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(141, 31);
             this.button2.TabIndex = 4;
             this.button2.Text = "Найти";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            //this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1099, 84);
+            this.textBox1.Location = new System.Drawing.Point(805, 327);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(297, 31);
             this.textBox1.TabIndex = 3;
@@ -82,20 +94,11 @@ namespace Zoo
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(21, 19);
+            this.label1.Location = new System.Drawing.Point(21, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "База";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1395, 863);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 41);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -111,13 +114,14 @@ namespace Zoo
             this.Column6,
             this.Column7});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 132);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 783);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(1516, 714);
+            this.dataGridView1.Size = new System.Drawing.Size(1516, 141);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
-            this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_UserDeletedRow);
+            //this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+           // this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            //this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
             // 
             // Договор
             // 
@@ -176,6 +180,19 @@ namespace Zoo
             this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column7.Width = 150;
             // 
+            // add
+            // 
+            this.add.BackColor = System.Drawing.Color.Turquoise;
+            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.add.Location = new System.Drawing.Point(805, 277);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(297, 31);
+            this.add.TabIndex = 6;
+            this.add.Text = "Добавить";
+            this.add.UseVisualStyleBackColor = false;
+            //this.add.Click += new System.EventHandler(this.add_Click);
+            // 
             // DataBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,7 +202,7 @@ namespace Zoo
             this.Name = "DataBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataBase";
-            this.Load += new System.EventHandler(this.DataBase_Load);
+           //this.Load += new System.EventHandler(this.DataBase_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -197,7 +214,6 @@ namespace Zoo
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
@@ -210,5 +226,7 @@ namespace Zoo
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button add;
     }
 }

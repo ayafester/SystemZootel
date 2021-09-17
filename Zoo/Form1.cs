@@ -15,10 +15,6 @@ namespace Zoo
 {
     public partial class Form1 : Form
     {
-        public static string dbFileName;
-        public static SQLiteConnection m_dbConn;
-        public static SQLiteCommand m_sqlCmd;
-
         public static string lastDay;
         public static string todayDay;
         public static string todayMonth;
@@ -31,27 +27,12 @@ namespace Zoo
         private void Form1_Load(object sender, EventArgs e)
         {
             todayDay = DateTime.Today.ToString("dd"); //сегодняшний день
-            todayMonth = DateTime.Today.ToString("MM");
-            todayYear = DateTime.Today.ToString("yyyy");
-            lastDay = DateTime.Today.AddDays(-1).ToString("dd.MM.yyyy");
+            todayMonth = DateTime.Today.ToString("MM"); //сегодняшний месяц
+            todayYear = DateTime.Today.ToString("yyyy"); //сегодняшний год
+            lastDay = DateTime.Today.AddDays(-1).ToString("dd.MM.yyyy");//вчерашний день
 
-            m_dbConn = new SQLiteConnection(); //переменные для подключения к БД
-            m_sqlCmd = new SQLiteCommand();
-
-            dbFileName = "zootel.sqlite";//название БД
-
-            try
-            {
-                m_dbConn = new SQLiteConnection("Data Source=" + dbFileName + ";Version=3;"); //создаем с
-                m_dbConn.Open();//открываем связь
-                m_sqlCmd.Connection = m_dbConn;//создаем команду
-                m_dbConn.Close();
-                label1.Text = "дб создана";
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show("Ошибка: " + ex.Message);
-            }
+            DB.Connect();
+            DB.CreateTables();
         }
 
         private void calc_Button_Click(object sender, EventArgs e)
